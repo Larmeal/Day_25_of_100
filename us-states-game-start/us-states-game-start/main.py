@@ -18,7 +18,4 @@ while again:
         game.move()
         game.reduce_country()
 
-    if game.reduce_country() == 50:
-        again = False
-
 screen.exitonclick()

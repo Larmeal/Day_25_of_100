@@ -28,10 +28,13 @@ class Game:
 
     def reduce_country(self):
         self.int_all_country += 1
-        return self.int_all_country
 
     def guess(self):
+        self.country()
         self.answer_state = self.screen.textinput(title=f"{self.int_all_country}/50 State Correct", prompt="What's another state's name?").title()
+        if self.answer_state == "Exit":   
+            data = pandas.DataFrame(self.all_country)
+            data.to_csv("All_state_you_should_to_learn.csv")
 
     def check_position(self):
         self.country()
@@ -46,9 +49,4 @@ class Game:
         self.pick.goto(self.show_position_country)
         self.pick.write(f"{self.answer_state}", font=("Courier", 8, "normal"))
     
-    def exit(self):
-        self.guess()
-        self.country()
-        self.remain_country = self.all_country.remove(self.answer_state)
-        data = pandas.DataFrame(self.remain_country)
-        data.to_csv("All_state_you_should_to_learn.csv")
+        
