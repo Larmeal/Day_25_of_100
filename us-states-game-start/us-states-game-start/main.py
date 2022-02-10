@@ -12,6 +12,7 @@ turtle.shape(image)
 again = True
 while again: 
     game.guess()
+    game.remove()
     if game.guess == "Exit":
         again = False
     else:

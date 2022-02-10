@@ -11,6 +11,8 @@ class Game:
         self.pick = turtle.Turtle()
         self.all_country = []
         self.x_y_position = []
+        self.answer_country = []
+        self.answer_state = []
         self.int_all_country = 0
 
     def country(self):
@@ -36,6 +38,7 @@ class Game:
             data = pandas.DataFrame(self.all_country)
             data.to_csv("All_state_you_should_to_learn.csv")
 
+
     def check_position(self):
         self.country()
         self.position()
@@ -49,4 +52,8 @@ class Game:
         self.pick.goto(self.show_position_country)
         self.pick.write(f"{self.answer_state}", font=("Courier", 8, "normal"))
     
-        
+    def remove(self):
+        self.country()
+        self.answer_country.append(self.answer_state)
+        for n in self.answer_country:
+            self.all_country.remove(n)
